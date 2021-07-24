@@ -1,0 +1,24 @@
+.banner {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 5px solid;
+}
+
+#highscore {
+    color:magenta;
+}
+
+.welcome {
+    display: flex;
+    justify-content: center;
+}
+
+.start {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    display: flex;
+    justify-content: center;
+}
