@@ -1,5 +1,7 @@
 //links var startButton to element id start-btn
 const startButton = document.getElementById('start-btn');
+//links var nextButton to element id next-btn
+const nextButton = document.getElementById('next-btn');
 //links var questionConElement to element id question-container
 const questionConElement = document.getElementById('questions-container');
 //create a var currentQuestions sets it to undefined
@@ -15,25 +17,44 @@ const ansButtonElement = document.getElementById('answer-buttons')
 startButton.addEventListener('click', startQuiz);
 
 function startQuiz() {
-console.log('quiz started');
-//hides start button
-startButton.classList.add('hide');
-//shuffle questions
-shuffleQuestions = questions.sort(() => Math.random() - .5);
-//set current questions index to 0
-currentQuestion = 0;
-//unhides questions container
-questionConElement.classList.remove('hide');
-//
-nextQuestion();
+    console.log('quiz started');
+    //hides start button
+    startButton.classList.add('hide');
+    //shuffle questions
+    shuffleQuestions = questions.sort(() => Math.random() - .5);
+    //set current questions index to 0
+    currentQuestion = 0;
+    //unhides questions container
+    questionConElement.classList.remove('hide');
+    //call next question function
+    nextQuestion();
 }
 
+//display the next question
 function nextQuestion() {
-displayQuestions(shuffleQuestions[currentQuestion])
+    defaultState()
+    displayQuestions(shuffleQuestions[currentQuestion])
 }
 
-function showQuestion(question) {
-questionElement.innerText = question.question
+function displayQuestions(question) {
+    questionElement.innerText = question.question
+    question.answers.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        ansButtonElement.appendChild(button)
+    })
+}
+
+function defaultState() {
+    nextButton.classList.add('hide')
+    while (ansButtonElement.firstChild) {
+        ansButtonElement.removeChild(ansButtonElement.firstChild)
+    }
 }
 
 function selectAnswer() {
@@ -44,13 +65,13 @@ const questions = [
     //question 1
     {
         question: "With the HTML DOM, JavaScript can access and change all the _________ of an HTML document.",
-        answers: {
-            a: "objects",
-            b: "array",
-            c: "elements",
-            d: "blimps"
-        },
-        correctAnswer: "c"
+        answers: [
+            {text: "objects", correct: false},
+            {text: "array", correct: false},
+            {text: "elements", correct: true},
+            {text: "blimps", correct: false}
+        ]
+
     },
     //question 2
     {
