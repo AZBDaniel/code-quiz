@@ -4,14 +4,15 @@ const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 //links var questionConElement to element id question-container
 const questionConElement = document.getElementById('questions-container');
-//create a var currentQuestions sets it to undefined
-let currentQuestion;
-//create a var shuffleQuestions sets it to undefined
-let shuffleQuestions;
 //
 const questionElement = document.getElementById('question')
 //
 const ansButtonElement = document.getElementById('answer-buttons')
+//create a var currentQuestions sets it to undefined
+let currentQuestion;
+//create a var shuffleQuestions sets it to undefined
+let shuffleQuestions;
+
 
 
 startButton.addEventListener('click', startQuiz);
@@ -45,7 +46,7 @@ function displayQuestions(question) {
         if (answer.correct) {
             button.dataset.correct = answer.correct
         }
-        button.addEventListener('click', selectAnswer)
+        button.addEventListener('click', pickAnswer)
         ansButtonElement.appendChild(button)
     })
 }
@@ -57,8 +58,14 @@ function defaultState() {
     }
 }
 
-function selectAnswer() {
+function pickAnswer(e) {
+    const choosenButton = e.target
+    const correct = selectedButton.dataset.correct4
 
+    setStatusClass(document.body, correct)
+    Array.from(ansButtonElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
 }
 
 const questions = [
@@ -66,10 +73,10 @@ const questions = [
     {
         question: "With the HTML DOM, JavaScript can access and change all the _________ of an HTML document.",
         answers: [
-            {text: "objects", correct: false},
-            {text: "array", correct: false},
-            {text: "elements", correct: true},
-            {text: "blimps", correct: false}
+            { text: "objects", correct: false },
+            { text: "array", correct: false },
+            { text: "elements", correct: true },
+            { text: "blimps", correct: false }
         ]
 
     },
