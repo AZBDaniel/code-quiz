@@ -5,10 +5,67 @@ var trueButton = document.getElementById('true');
 var falseButton = document.getElementById('false');
 var completedTest = document.getElementById('completedTest');
 var currentQuestion = 0;
+
 var timeLeft = 60;
 var score = 0;
+//all new test code blow
+var = index;
 
 
+var questions = [
+    //question 1
+    {
+        question: "With the HTML DOM, JavaScript can access and change all the _________ of an HTML document.",
+        answers: {
+            a: "objects",
+            b: "array",
+            c: "elements",
+            d: "blimps"
+        },
+        correctAnswer: "c"
+    },
+    //question 2
+    {
+        question: "In Javascript onselect is used for accessing button ______.",
+        answers: {
+            a: "feature",
+            b: "looks",
+            c: "buttons",
+            d: "clicks"
+        },
+        correctAnswer: "d"
+    },
+    //question 3
+    {
+        
+        q: "The clearTimeout() method _____ the execution of the function specified in setTimeout().",
+        answer1: stops,
+        answer2: starts,
+        answer3: skips,
+        answer4: repeat,
+        a: 1
+    },
+    //question 4
+    {
+        
+        q: "The _____ web storage can be used to store and retrieve data",
+        answer1: home,
+        answer2: local,
+        answer3: resident,
+        answer4: foreign,
+        a: 2
+    },
+    //question 5
+    {
+        
+        q: "In Javascript the === operator _______ data being logged in",
+        answer1: ignores,
+        answer2: duplicates,
+        answer3: compares,
+        answer4: deletes,
+        a: 1
+    }
+]
 
 
 startButton.addEventListener('click', startQuiz);
