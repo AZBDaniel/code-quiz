@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Javascript Quiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-  </head>
-
-  <body>
-    <div class="banner">
-      <h4 id="highscore"> View High Score</h4>
-      <div>
-        <h4> Count Down</h4>
-        <h3 id="countdown" hidden></h3>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="assets/css/style.css" rel="stylesheet">
+  <script defer src="./assets/js/script.js"></script>
+  <title>Javascript Quiz</title>
+</head>
+<body class="incorrect">
+  <div class="container">
+    <div id="questions-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+        <button class="btn">Answer 4</button>
       </div>
     </div>
-    <div class="container">
-      <h1 class="welcome">Javascript Quiz Challenge</h1>
-      <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-      <button id="start">Start</button>
-      <h3 class="welcome">When Ready Hit the Start Button</Button></h3>
-      <h3 id="question"></h3>
-      <div>
-        <button id="true" hidden>True</button>
-        <button id="false" hidden>False</button>
-      </div>
-      <p id="completedTest" hidden></p>
+    <div class="controls">
+      <button id="start-btn" class="start-btn btn">Start</button>
+      <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
-    <script src="./assets/js/script.js"></script>
-  </body>
+  </div>
+</body>
 </html>

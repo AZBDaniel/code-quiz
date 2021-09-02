@@ -1,24 +1,28 @@
-.banner {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 5px solid;
+/* *, *::before, *::after {
+    box-sizing: border-box;
+} */
+
+:root {
+    --color-std: blue;
+    --color-correct: green;
+    --color-incorrect: red;
 }
 
-#highscore {
-    color:magenta;
-}
-
-.welcome {
-    display: flex;
-    justify-content: center;
-}
-
-.start {
+body {
+    background-color: var(--color-std);
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 1000vw;
 }
 
-p {
-    display: flex;
-    justify-content: center;
+body.correct {
+    background-color: var(--color-correct);
+}
+
+body.incorrect {
+    background-color: var(--color-incorrect);
 }
