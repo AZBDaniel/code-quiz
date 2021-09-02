@@ -1,13 +1,46 @@
+//links var startButton to element id start-btn
+const startButton = document.getElementById('start-btn');
+//links var questionConElement to element id question-container
+const questionConElement = document.getElementById('questions-container');
+//create a var currentQuestions sets it to undefined
+let currentQuestion;
+//create a var shuffleQuestions sets it to undefined
+let shuffleQuestions;
+//
+const questionElement = document.getElementById('question')
+//
+const ansButtonElement = document.getElementById('answer-buttons')
 
 
+startButton.addEventListener('click', startQuiz);
 
+function startQuiz() {
+console.log('quiz started');
+//hides start button
+startButton.classList.add('hide');
+//shuffle questions
+shuffleQuestions = questions.sort(() => Math.random() - .5);
+//set current questions index to 0
+currentQuestion = 0;
+//unhides questions container
+questionConElement.classList.remove('hide');
+//
+nextQuestion();
+}
 
+function nextQuestion() {
+displayQuestions(shuffleQuestions[currentQuestion])
+}
 
+function showQuestion(question) {
+questionElement.innerText = question.question
+}
 
+function selectAnswer() {
 
+}
 
-
-var questions = [
+const questions = [
     //question 1
     {
         question: "With the HTML DOM, JavaScript can access and change all the _________ of an HTML document.",
