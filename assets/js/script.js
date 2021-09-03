@@ -23,7 +23,7 @@ let shuffleQuestions;
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuestion++
-    setNextQuestion()
+    nextQuestion()
 })
 
 //start quiz function
@@ -74,11 +74,11 @@ function defaultState() {
 //function for election answer in array which unhides buttons
 function pickAnswer(e) {
     const choosenButton = e.target
-    const correct = selectedButton.dataset.correct4
+    const correct = choosenButton.dataset.correct
 
-    setStatusClass(document.body, correct)
+    compelStatusClass(document.body, correct)
     Array.from(ansButtonElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct)
+        compelStatusClass(button, button.dataset.correct)
     })
     if (shuffleQuestions.length > currentQuestion + 1){
         nextButton.classList.remove('hide')
@@ -107,7 +107,7 @@ function removeStatusClass(element) {
 
 
 const questions = [
-    //question 1
+    //question 1 MC
     {
         question: "With the HTML DOM, JavaScript can access and change all the _________ of an HTML document.",
         answers: [
@@ -118,49 +118,45 @@ const questions = [
         ]
 
     },
-    //question 2
+    //question 2 MC
     {
         question: "In Javascript onselect is used for accessing button ______.",
-        answers: {
-            a: "feature",
-            b: "looks",
-            c: "buttons",
-            d: "clicks"
-        },
-        correctAnswer: "d"
+        answers: [
+            {text: "feature", correct: false},
+            {text: "looks", correct: false},
+            {text: "buttons", correct: false},
+            {text: "clicks", correct: true}
+        ]
     },
-    //question 3
+    //question 3 MC
     {
         question: "The clearTimeout() method _____ the execution of the function specified in setTimeout().",
-        answers: {
-            a: "stops",
-            b: "starts",
-            c: "skips",
-            d: "repeat"
-        },
-        correctAnswer: "a"
+        answers: [
+            {text: "stops", correct: true},
+            {text: "starts", correct: false},
+            {text: "skips", correct: false},
+            {text: "repeat", correct: false}
+        ]
     },
-    //question 4
+    //question 4 MC
     {
         question: "The _____ web storage can be used to store and retrieve data",
-        answers: {
-            a: "home",
-            b: "local",
-            c: "resident",
-            d: "foreign"
-        },
-        correctAnswer: "b"
+        answers: [
+            {text: "home", correct: false},
+            {text: "local",correct: true},
+            {text: "resident", correct: false},
+            {text: "foreign", correct: false}
+        ]
     },
-    //question 5
+    //question 5 MC
     {
         question: "In Javascript the === operator _______ data being logged in",
-        answers: {
-            a: "ignores",
-            b: "duplicates",
-            c: "compares",
-            d: "deletes"
-        },
-        correctAnswer: "a"
+        answers: [
+            {text: "ignores", correct: false},
+            {text: "duplicates", correct: false},
+            {text: "compares", correct: true},
+            {text: "deletes", correct: false}
+        ]
     }
 ]
 
