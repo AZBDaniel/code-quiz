@@ -50,7 +50,7 @@ function nextQuestion() {
 //display current question
 function displayQuestions(question) {
     questionElement.innerText = question.question
-    question.answers.forEach( answer => {
+    question.answers.forEach(answer => {
         const button = document.createElement('button')
         button.innerText = answer.text
         button.classList.add('btn')
@@ -80,13 +80,13 @@ function pickAnswer(e) {
     Array.from(ansButtonElement.children).forEach(button => {
         compelStatusClass(button, button.dataset.correct)
     })
-    if (shuffleQuestions.length > currentQuestion + 1){
+    if (shuffleQuestions.length > currentQuestion + 1) {
         nextButton.classList.remove('hide')
     } else {
         startButton.innerText = 'Restart'
         startButton.classList.remove('hide')
     }
-    
+
 }
 
 //set the new element class for correct or incorrect selected btn
@@ -103,7 +103,7 @@ function compelStatusClass(element, correct) {
 function removeStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('incorrect')
-} 
+}
 
 
 const questions = [
@@ -122,40 +122,82 @@ const questions = [
     {
         question: "In Javascript onselect is used for accessing button ______.",
         answers: [
-            {text: "feature", correct: false},
-            {text: "looks", correct: false},
-            {text: "buttons", correct: false},
-            {text: "clicks", correct: true}
+            { text: "feature", correct: false },
+            { text: "looks", correct: false },
+            { text: "buttons", correct: false },
+            { text: "clicks", correct: true }
         ]
     },
     //question 3 MC
     {
         question: "The clearTimeout() method _____ the execution of the function specified in setTimeout().",
         answers: [
-            {text: "stops", correct: true},
-            {text: "starts", correct: false},
-            {text: "skips", correct: false},
-            {text: "repeat", correct: false}
+            { text: "stops", correct: true },
+            { text: "starts", correct: false },
+            { text: "skips", correct: false },
+            { text: "repeat", correct: false }
         ]
     },
     //question 4 MC
     {
         question: "The _____ web storage can be used to store and retrieve data",
         answers: [
-            {text: "home", correct: false},
-            {text: "local",correct: true},
-            {text: "resident", correct: false},
-            {text: "foreign", correct: false}
+            { text: "home", correct: false },
+            { text: "local", correct: true },
+            { text: "resident", correct: false },
+            { text: "foreign", correct: false }
         ]
     },
     //question 5 MC
     {
         question: "In Javascript the === operator _______ data being logged in",
         answers: [
-            {text: "ignores", correct: false},
-            {text: "duplicates", correct: false},
-            {text: "compares", correct: true},
-            {text: "deletes", correct: false}
+            { text: "ignores", correct: false },
+            { text: "duplicates", correct: false },
+            { text: "compares", correct: true },
+            { text: "deletes", correct: false }
+        ]
+    },
+    //question 6 TF
+    {
+        question: "Math.random can be used to create random mutiple choice function?",
+        answers: [
+            { text: "Correct", correct: true },
+            { text: "Incorrect", correct: false }
+        ]
+    },
+    //question 7 TF
+    {
+        question: "A variable not set in creation, will default to true?",
+        answers: [
+            { text: "Correct", correct: false },
+            { text: "Incorrect", correct: true }
+        ]
+    },
+    //question 8 TF
+    {
+        question: "Javascript can update (hide, remove, set) html classes",
+        answers: [
+            { text: "Correct", correct: true },
+            { text: "Incorrect", correct: false }
+        ]
+    },
+    //question 9 TTT
+    {
+        question: "The Best Operating System to code with is?",
+        answers: [
+            { text: "Windows", correct: true },
+            { text: "Linux", correct: true },
+            { text: "MacOS", correct: true }
+        ]
+    },
+    //question 10 FFF
+    {
+        question: "Which school is better then the University of Arizona?",
+        answers: [
+            { text: "Arizona State", correct: false },
+            { text: "University of Oregon", correct: false },
+            { text: "University of Oregon", correct: false }
         ]
     }
 ]
