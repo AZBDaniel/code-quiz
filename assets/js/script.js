@@ -23,6 +23,7 @@ let shuffleQuestions;
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuestion++
+    console.log(currentQuestion)
     nextQuestion()
 })
 
