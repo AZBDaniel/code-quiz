@@ -1,0 +1,85 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-std: darkorange;
+    --color-correct: darkgreen;
+    --color-incorrect: darkred;
+    --btn-std: dodgerblue;
+    --btn-outline:blue ;
+    --btn-correct: forestgreen;
+    --btn-incorrect: firebrick;
+    --btn-nav: navy;
+}
+
+body {
+    background-color: var(--color-std);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vw;
+}
+
+body.correct {
+    background-color: var(--color-correct);
+}
+
+body.incorrect {
+    background-color: var(--color-incorrect);
+}
+
+.container {
+    width: 800px;
+    max-width: 80%;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
+    background-color: var(--btn-std);
+    border: 3px solid var(--btn-outline);
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+}
+
+.btn:hover {
+    border-color: black;
+}
+
+.btn.correct {
+background-color: var(--btn-correct);
+}
+
+.btn.incorrect {
+    background-color: var(--btn-incorrect);
+}
+
+.start-btn, .next-btn {
+font-size: 25px;
+font-weight: bold;
+padding: 10px 20px;
+background-color: var(--btn-nav);
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
