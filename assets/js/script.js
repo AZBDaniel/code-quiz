@@ -13,22 +13,20 @@ const questionElement = document.getElementById('question')
 //links ansButtonElement to element answer-button
 const ansButtonElement = document.getElementById('answer-buttons')
 
+//create var 
 const localStorage = window.localStorage;
 
 let localResults = (() => {
     const results = localStorage.getItem('results')
     return results ? JSON.parse(results) : [];
+    //IIFE
 })();
 
-//create a var currentQuestions sets it to undefined
+//create a vars
 let currentQuestion;
-//create a var shuffleQuestions sets it to undefined
 let shuffleQuestions;
-
 let totalCorrectAnswers;
-
 let timeLeft;
-
 let timer;
 
 //start and next button event listener
@@ -38,11 +36,13 @@ nextButton.addEventListener('click', () => {
     nextQuestion()
 })
 
+//create a object for controlling element add remove hide to make code cleaner
 const elementControl = {
     hide: (element) => element.classList.add('hide'),
     show: (element) => element.classList.remove('hide')
 };
 
+//created object for displaying or not the timer container
 const timerContainer = (() => {
     const container = document.getElementById('timer-container');
     const hide = () => elementControl.hide(container);
@@ -52,6 +52,7 @@ const timerContainer = (() => {
         hide,
         show
     }
+    //IIFE
 })();
 
 const initials = (() => {
@@ -68,6 +69,7 @@ const initials = (() => {
         show,
         getInitials
     }
+    //IIFE
 })();
 
 const highScores = (() => {
@@ -88,6 +90,7 @@ const highScores = (() => {
         addHighScore,
         initializeHighScores
     }
+    //IIFE
 })();
 
 highScores.initializeHighScores();
@@ -111,6 +114,7 @@ function startQuiz() {
     nextQuestion();
 }
 
+//start timer function
 function startTimer() {
     timeLeft = 30;
     const element = document.getElementById("timer");
@@ -296,9 +300,9 @@ const questions = [
     {
         question: "The Best Operating System to code with is?",
         answers: [
-            { text: "Windows", correct: true },
+            { text: "Windows", correct: false },
             { text: "Linux", correct: true },
-            { text: "MacOS", correct: true }
+            { text: "MacOS", correct: false }
         ]
     },
     //question 10 FFF
@@ -306,8 +310,8 @@ const questions = [
         question: "Which school is better then the University of Arizona?",
         answers: [
             { text: "Arizona State", correct: false },
-            { text: "University of Oregon", correct: false },
-            { text: "University of Oregon", correct: false }
+            { text: "Northern Arizona University", correct: false },
+            { text: "No School is better", correct: true }
         ]
     }
 ]
