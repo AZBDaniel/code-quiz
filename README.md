@@ -1,21 +1,60 @@
-# code-quiz
-Challenge 4
+# budget-tracker
+Challenge 4 U of A 
 
-User Story
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
+## Badge
 
+None Applicable 
 
-Acceptance Criteria
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+## Description
+
+A application for to quiz yourself or friends on javascript subjects, and see who can get the highest score.
+
+## Table of Contents
+
+- [Usage](#usage)
+- [Installation](#installation)
+- [Walkthrough](#walkthrough)
+- [Languages](#languages)
+- [Tests](#tests)
+- [License](#license)
+- [Credits](#credits)
+- [Questions](#questions)
+
+## Usage
+
+Downloading the zip file from my github or forking the repo will allow you to use this code as a starting point for your own projects. 
+The simple open the html file in brower which will allow it to function. The application does allow for high score to be kept in local storage.
+
+## Installation
+
+None Applicable 
+
+## Walkthrough or Screenshot
+![Homescreen](assets/doc/images/startPage.PNG)
+![Questions Display](assets/doc/images/questionsDisplay.PNG)
+![Correct Answer](assets/doc/images/correctAnswer.PNG)
+![Wrong Answer](assets/doc/images/incorrectAnswer.PNG)
+![Submit Initials](assets/doc/images/initialPage.PNG)
+![High Score](assets/doc/images/highScore.PNG)
+
+## Langauges
+
+- Javascript
+- css
+- html
+
+## Tests
+None Applicable 
+
+## License
+
+Copyright (c) 2021
+
+## Credits
+
+- University of Arizona Ta,s and Tutors
+
+## Questions
+
+- Bryan Daniel 
+    - GitHub [AZBDaniel](https://github.com/AZBDaniel)
