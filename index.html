@@ -9,6 +9,19 @@
   <title>Javascript Quiz</title>
 </head>
 <body>
+  <div class="banner">
+    <h1>
+      Welcome to Week 4 Javascript Quiz!
+    </h1>
+  </div>
+  <div class="container hide" id="timer-container">
+    <p id="timer"></p>
+  </div>
+  <div class="container hide" id="initials-container">
+    <p>GAME OVER!</p>
+    Enter Initials <input id="initials" type="text" />
+    <button class="submit-btn btn" id="submit-btn">Submit</button>
+  </div>
   <div class="container">
     <div id="questions-container" class="hide">
       <div id="question">Question</div>
@@ -23,6 +36,11 @@
       <button id="start-btn" class="start-btn btn">Start</button>
       <button id="next-btn" class="next-btn btn hide">Next</button>
     </div>
+  </div>
+  <div class="container" id="high-scores-container">
+    <h1>
+      High Scores!
+    </h1>
   </div>
 </body>
 </html>
