@@ -15,9 +15,10 @@
 
 body {
     background-color: var(--color-std);
-    margin: 0;
+    margin: 100px 0;
     padding: 0;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     width: 100vw;

@@ -13,23 +13,92 @@ const questionElement = document.getElementById('question')
 //links ansButtonElement to element answer-button
 const ansButtonElement = document.getElementById('answer-buttons')
 
+const localStorage = window.localStorage;
+
+let localResults = (() => {
+    const results = localStorage.getItem('results')
+    return results ? JSON.parse(results) : [];
+})();
+
 //create a var currentQuestions sets it to undefined
 let currentQuestion;
 //create a var shuffleQuestions sets it to undefined
 let shuffleQuestions;
 
+let totalCorrectAnswers;
+
+let timeLeft;
+
+let timer;
 
 //start and next button event listener
 startButton.addEventListener('click', startQuiz);
 nextButton.addEventListener('click', () => {
     currentQuestion++
-    console.log(currentQuestion)
     nextQuestion()
 })
+
+const elementControl = {
+    hide: (element) => element.classList.add('hide'),
+    show: (element) => element.classList.remove('hide')
+};
+
+const timerContainer = (() => {
+    const container = document.getElementById('timer-container');
+    const hide = () => elementControl.hide(container);
+    const show = () => elementControl.show(container);
+
+    return {
+        hide,
+        show
+    }
+})();
+
+const initials = (() => {
+    const containerElement = document.getElementById('initials-container');
+    const inputElement = document.getElementById('initials');
+    const hide = () => elementControl.hide(containerElement);
+    const show = () => elementControl.show(containerElement);
+    const getInitials = () => inputElement.value;
+
+    return {
+        containerElement,
+        inputElement,
+        hide,
+        show,
+        getInitials
+    }
+})();
+
+const highScores = (() => {
+    const containerElement = document.getElementById('high-scores-container');
+    const show = () => elementControl.show(containerElement);
+    const hide = () => elementControl.hide(containerElement);
+    const addHighScore = (name, totalCorrectAnswers) => {
+        const p = document.createElement('p');
+        p.innerText = `${name}: ${totalCorrectAnswers}`;
+        containerElement.appendChild(p)
+    };
+    const initializeHighScores = () => localResults.forEach(score => addHighScore(score.name, score.totalCorrectAnswers));
+
+    return {
+        containerElement,
+        show,
+        hide,
+        addHighScore,
+        initializeHighScores
+    }
+})();
+
+highScores.initializeHighScores();
+highScores.hide();
 
 //start quiz function
 function startQuiz() {
     console.log('quiz started');
+    totalCorrectAnswers = 0;
+    highScores.hide();
+    startTimer();
     //hides start button
     startButton.classList.add('hide');
     //shuffle questions
@@ -40,6 +109,22 @@ function startQuiz() {
     questionConElement.classList.remove('hide');
     //call next question function
     nextQuestion();
+}
+
+function startTimer() {
+    timeLeft = 30;
+    const element = document.getElementById("timer");
+    element.innerText = `${timeLeft} seconds`;
+    timerContainer.show();
+    timer = setInterval(() => {
+        timeLeft--;
+        element.innerText = `${timeLeft} seconds`;
+        if (timeLeft < 0) {
+            clearInterval(timer);
+            stopQuiz();
+            element.innerText = `You got ${totalCorrectAnswers} correct out of ${questions.length}.`
+        }
+    }, 1000);
 }
 
 //display the next question
@@ -76,6 +161,11 @@ function defaultState() {
 function pickAnswer(e) {
     const choosenButton = e.target
     const correct = choosenButton.dataset.correct
+    if (correct) {
+        totalCorrectAnswers++;
+    } else {
+        timeLeft = timeLeft - 5;
+    }
 
     compelStatusClass(document.body, correct)
     Array.from(ansButtonElement.children).forEach(button => {
@@ -84,10 +174,29 @@ function pickAnswer(e) {
     if (shuffleQuestions.length > currentQuestion + 1) {
         nextButton.classList.remove('hide')
     } else {
-        startButton.innerText = 'Restart'
-        startButton.classList.remove('hide')
+        stopQuiz();
     }
+}
 
+function stopQuiz() {
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hide')
+    nextButton.classList.add('hide');
+    questionConElement.classList.add('hide');
+    initials.show();
+    timerContainer.hide();
+    inputInitials()
+}
+
+function inputInitials() {
+    document.getElementById('submit-btn').addEventListener('click', (e) => {
+        localResults.push({ name: initials.getInitials(), totalCorrectAnswers });
+        localStorage.setItem('results', JSON.stringify(localResults));
+        initials.hide();
+        timerContainer.show();
+        highScores.addHighScore(initials.getInitials(), totalCorrectAnswers);
+        highScores.show();
+    })
 }
 
 //set the new element class for correct or incorrect selected btn
